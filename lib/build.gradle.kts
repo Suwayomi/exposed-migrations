@@ -44,7 +44,7 @@ publishing {
         create<MavenPublication>("maven") {
             groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
-            version = "2.0.1"
+            version = "3.0.0"
 
             from(components["kotlin"])
         }
