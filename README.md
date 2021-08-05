@@ -52,8 +52,8 @@ or list your migrations manually
 runMigrations(listOf(M0001()))
 ```
 
-The line above will find all classes named `MXXXX(.*)` and apply them in order
- of the number after `M`.
+The line above will find all classes named according to 
+the regex `^M(\\d+)(.*)$` and apply them in order of the number after `M`.
 
 # SQL details
 
