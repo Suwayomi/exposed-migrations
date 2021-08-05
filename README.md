@@ -46,7 +46,14 @@ class M0001 : Migration() {
 and
 
 ```kotlin
-loadMigrationsFrom("com.your.program.migration", AnyClassFromYourCode::class.java)
+val migrations = loadMigrationsFrom("com.your.program.migration", AnyClassFromYourCode::class.java)
+runMigrations(migrations)
+```
+
+or list your migrations manually
+
+```kotlin
+runMigrations(listOf(M0001()))
 ```
 
 The line above will find all classes named `MXXXX(.*)` and apply them in order
