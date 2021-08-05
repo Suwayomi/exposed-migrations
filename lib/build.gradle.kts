@@ -1,6 +1,7 @@
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.32"
     `java-library`
+    `maven-publish`
 }
 
 repositories {
@@ -27,3 +28,15 @@ dependencies {
     compileOnly("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
 
 }
+
+tasks {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf(
+                    "-Xopt-in=kotlin.RequiresOptIn",
+            )
+        }
+    }
+}
+
+val group = "com.github.Suwayomi"
