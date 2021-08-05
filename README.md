@@ -7,7 +7,7 @@ See this issue: https://github.com/JetBrains/Exposed/issues/165
 Currently, only migrations to a higher version are possible, downgrades are not.
 
 # Installation
-This package is published using jitpack. Head to https://jitpack.io/#Suwayomi/exposed-migrations
+This package is published using jitpack. Head to https://jitpack.io/#Suwayomi/exposed-migrations for instructions.
 
 # Sample usage
 Put all your migrations in the same package, for example `com.your.program.migration`.
