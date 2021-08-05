@@ -64,7 +64,6 @@ by [Andreas Mausch](https://gitlab.com/andreas-mausch), licenced under `MIT`.
     MIT License
     
     Copyright (c) 2020 Andreas Mausch
-    Copyright (c) 2021 The Suwayomi Project
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
