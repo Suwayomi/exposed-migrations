@@ -10,10 +10,10 @@ repositories {
 
 dependencies {
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    compileOnly(platform("org.jetbrains.kotlin:kotlin-bom"))
 
     // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Logging
     compileOnly("org.slf4j:slf4j-api:1.7.30")
@@ -39,4 +39,14 @@ tasks {
     }
 }
 
-val group = "com.github.Suwayomi"
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.suwayomi"
+            artifactId = "exposed-migrations"
+            version = "2.0.1"
+
+            from(components["kotlin"])
+        }
+    }
+}
