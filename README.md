@@ -1,8 +1,7 @@
 # exposed-migrations
 A fork of [exposed-migrations](https://gitlab.com/andreas-mausch/exposed-migrations) 
 by [Andreas Mausch](https://gitlab.com/andreas-mausch), licenced under `MIT`.
-
-You can find a copy of `MIT` [here](./LICENSE) 
+You can find a copy of the license [here](./LICENSE) 
 
 # Original README
 
