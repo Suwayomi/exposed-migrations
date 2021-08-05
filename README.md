@@ -19,12 +19,16 @@ Currently, only migrations to a higher version are possible, downgrades are not.
 This package is published using jitpack. Head to https://jitpack.io/#Suwayomi/exposed-migrations
 
 # Sample usage
-Put all your migrations in the same package, for example `com.your.program.migration`
+Put all your migrations in the same package, for example `com.your.program.migration`.
+
+Create a class named `MXXXX` like bellow, `XXXX` being the number of this migration class.
+
+*Note: you can append anything to `MXXXX` for extra context, i.e. `M0001_FirstMigration`*
 
 ```kotlin
 package com.your.program.migration
 
-class V1_SampleMigration : Migration() {
+class M0001 : Migration() {
   object SomeTestTable : IntIdTable() {
     val someField = integer("someField")
 
@@ -44,6 +48,9 @@ and
 ```kotlin
 loadMigrationsFrom("com.your.program.migration", AnyClassFromYourCode::class.java)
 ```
+
+The line above will find all classes named `MXXXX(.*)` and apply them in order
+ of the number after `M`.
 
 # SQL details
 
