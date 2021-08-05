@@ -20,10 +20,11 @@ Create a class named `MXXXX` like bellow, `XXXX` being the number of this migrat
 package com.your.program.migration
 
 class M0001 : Migration() {
-  object SomeTestTable : IntIdTable() {
-    val someField = integer("someField")
-
+  /** a static snapshot of [SomeTable] */
+  private class SomeTable : IntIdTable() {
     init {
+      integer("someField")
+
       index(true, someField)
     }
   }
