@@ -61,10 +61,10 @@ fun runMigrations(migrations: List<Migration>, database: Database = TransactionM
 }
 
 @OptIn(ExperimentalPathApi::class)
-private fun getTopLevelClasses(packageName: String): List<Class<*>> {
-    EmptyClass::class.java.getResource("/" + packageName.replace('.', '/'))
+private fun getTopLevelClasses(packageName: String, klass: Class<*>): List<Class<*>> {
+    klass.getResource("/" + packageName.replace('.', '/'))
     val path = "/" + packageName.replace('.', '/')
-    val uri = EmptyClass::class.java.getResource(path).toURI()
+    val uri = klass.getResource(path).toURI()
 
     return when (uri.scheme) {
         "jar" -> {
@@ -80,8 +80,8 @@ private fun getTopLevelClasses(packageName: String): List<Class<*>> {
 }
 
 @Suppress("UnstableApiUsage")
-fun loadMigrationsFrom(packageName: String): List<Migration> {
-    return getTopLevelClasses(packageName)
+fun loadMigrationsFrom(packageName: String, klass: Class<*>): List<Migration> {
+    return getTopLevelClasses(packageName, klass)
         .map {
             logger.debug("found Migration class ${it.name}")
             val clazz = it.getDeclaredConstructor().newInstance()
