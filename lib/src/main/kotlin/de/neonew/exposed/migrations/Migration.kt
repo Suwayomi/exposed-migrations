@@ -5,7 +5,7 @@ abstract class Migration {
     val version: Int
 
     init {
-        val groups = Regex("^M(\\d+)(.*)$").matchEntire(this::class.simpleName!!)?.groupValues
+        val groups = Regex("^M(\\d+)_?(.*)$").matchEntire(this::class.simpleName!!)?.groupValues
             ?: throw IllegalArgumentException("Migration class name doesn't match convention")
         version = groups[1].toInt()
         name = groups[2]
