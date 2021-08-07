@@ -44,19 +44,21 @@ java {
 }
 
 publishing {
+    val libVersion = "3.0.1"
+
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("defaultJar") {
             groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
-            version = "3.0.0"
+            version = libVersion
 
             from(components["kotlin"])
         }
 
-        create<MavenPublication>("maven2") {
+        create<MavenPublication>("sourcesJar") {
             groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
-            version = "3.0.0" + "-sources"
+            version = "$libVersion-sources"
             artifact(tasks.named("sourcesJar"))
 
             from(components["kotlin"])
