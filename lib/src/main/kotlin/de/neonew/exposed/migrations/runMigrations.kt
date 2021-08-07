@@ -19,7 +19,11 @@ import kotlin.streams.toList
 
 private val logger = KotlinLogging.logger {}
 
+internal lateinit var migrationsDatabase: Database
+
 fun runMigrations(migrations: List<Migration>, database: Database = TransactionManager.defaultDatabase!!, clock: Clock = Clock.systemUTC()) {
+    migrationsDatabase = database
+
     checkVersions(migrations)
 
     logger.info { "Running migrations on database ${database.url}" }
