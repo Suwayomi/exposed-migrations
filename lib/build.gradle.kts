@@ -8,10 +8,6 @@ repositories {
     mavenCentral()
 }
 
-java {
-    withSourcesJar()
-}
-
 dependencies {
     // Align versions of all Kotlin components
     compileOnly(platform("org.jetbrains.kotlin:kotlin-bom"))
@@ -43,12 +39,25 @@ tasks {
     }
 }
 
+java {
+    withSourcesJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
             version = "3.0.0"
+
+            from(components["kotlin"])
+        }
+
+        create<MavenPublication>("maven2") {
+            groupId = "com.github.suwayomi"
+            artifactId = "exposed-migrations"
+            version = "3.0.0" + "-sources"
+            artifact(tasks.named("sourcesJar"))
 
             from(components["kotlin"])
         }
