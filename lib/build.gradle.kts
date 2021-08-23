@@ -44,7 +44,7 @@ java {
 }
 
 publishing {
-    val libVersion = "3.1.0"
+    val libVersion = "3.1.1"
 
     publications {
         create<MavenPublication>("defaultJar") {
