@@ -13,7 +13,7 @@ import de.neonew.exposed.migrations.migrationsDatabase
  * Using plain name without said conversion may cause issues in different Locales or naming styles.
  * ref: https://garygregory.wordpress.com/2015/11/03/java-lowercase-conversion-turkey/
  */
-internal fun String.toSqlName(): String =
+fun String.toSqlName(): String =
     migrationsDatabase.identifierManager.let {
         it.quoteIfNecessary(
             it.inProperCase(this)
