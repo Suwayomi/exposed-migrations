@@ -35,21 +35,22 @@ class M0001 : Migration() {
 }
 ```
 
-and
+and run the migration(s)
 
 ```kotlin
 val migrations = loadMigrationsFrom("com.your.program.migration", AnyClassFromYourCode::class.java)
 runMigrations(migrations)
 ```
+*Note: the line above will find all migration classes named according to 
+the regex `^M(\\d+)(.*)$` and apply them in order of the number after `M`.
+`AnyClassFromYourCode` is needed to get a java ClassLoader*
+
 
 or list your migrations manually
 
 ```kotlin
 runMigrations(listOf(M0001()))
 ```
-
-The line above will find all classes named according to 
-the regex `^M(\\d+)(.*)$` and apply them in order of the number after `M`.
 
 # SQL details
 
