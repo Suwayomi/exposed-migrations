@@ -54,7 +54,7 @@ runMigrations(listOf(M0001()))
 
 # Migration helpers
 Explore [`de.neonew.exposed.migrations.helpers`](./lib/src/main/kotlin/de/neonew/exposed/migrations/helpers) 
-for some useful Migration helper classes to make writing them easier. Pull requests for additional classes is welcomed.
+for some useful Migration helper classes to make writing them easier. Pull requests for additional helpers is welcomed.
 
 For example to rename a field you can have:
 ```kotlin
