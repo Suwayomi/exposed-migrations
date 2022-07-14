@@ -52,6 +52,25 @@ or list your migrations manually
 runMigrations(listOf(M0001()))
 ```
 
+# Migration helpers
+Explore [`de.neonew.exposed.migrations.helpers`](./lib/src/main/kotlin/de/neonew/exposed/migrations/helpers) 
+for some useful Migration helper classes to make writing them easier. Pull requests for additional classes is welcomed.
+
+For example to rename a field you can have:
+```kotlin
+package com.your.program.migration
+
+import de.neonew.exposed.migrations.helpers.RenameFieldMigration
+
+/** Fifth migration: Renamed Order's quantity field to use a more verbose name*/ 
+class M0005_OrderTableQuantityRename : RenameFieldMigration(
+    "Order", // table name
+    "qtty", // old field name
+    "quantity" // new field name
+)
+```
+
+
 # SQL details
 
 A table named `MIGRATIONS` is used to store all executed migrations.
