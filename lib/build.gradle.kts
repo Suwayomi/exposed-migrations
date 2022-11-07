@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.4.32"
+    id("org.jetbrains.kotlin.jvm") version "1.7.20"
     `java-library`
     `maven-publish`
 }
@@ -16,12 +16,12 @@ dependencies {
     compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Logging
-    compileOnly("org.slf4j:slf4j-api:1.7.30")
-    compileOnly("ch.qos.logback:logback-classic:1.2.3")
-    compileOnly("io.github.microutils:kotlin-logging:2.0.6")
+    compileOnly("org.slf4j:slf4j-api:1.7.32")
+    compileOnly("ch.qos.logback:logback-classic:1.2.6")
+    compileOnly("io.github.microutils:kotlin-logging:2.1.21")
 
     // Exposed ORM
-    val exposedVersion = "0.34.1"
+    val exposedVersion = "0.40.1"
     compileOnly("org.jetbrains.exposed:exposed-core:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
@@ -44,7 +44,7 @@ java {
 }
 
 publishing {
-    val libVersion = "3.1.4"
+    val libVersion = "3.2.0"
 
     publications {
         create<MavenPublication>("defaultJar") {
