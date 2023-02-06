@@ -79,7 +79,9 @@ It is used to find the current state of the database and to determine which migr
 
 # Credit
 A fork of [exposed-migrations](https://gitlab.com/andreas-mausch/exposed-migrations) 
-by [Andreas Mausch](https://gitlab.com/andreas-mausch), licenced under `MIT`.
+by [Andreas Mausch](https://gitlab.com/andreas-mausch), licenced under `MIT`. New files
+added to the project in the Suwayomi fork are licensed under `MPL 2.0`, if a file doesn't
+include a license header then it's covered by the `MIT` license.
 
     MIT License
     
