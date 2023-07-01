@@ -1,6 +1,6 @@
 package de.neonew.exposed.migrations
 
-import mu.KotlinLogging
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils.create
