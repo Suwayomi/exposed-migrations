@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.7.20"
+    id("org.jetbrains.kotlin.jvm") version "1.8.20"
     `java-library`
     `maven-publish`
 }
@@ -9,16 +9,8 @@ repositories {
 }
 
 dependencies {
-    // Align versions of all Kotlin components
-    compileOnly(platform("org.jetbrains.kotlin:kotlin-bom"))
-
-    // Use the Kotlin JDK 8 standard library.
-    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-
     // Logging
-    compileOnly("org.slf4j:slf4j-api:1.7.32")
-    compileOnly("ch.qos.logback:logback-classic:1.2.6")
-    compileOnly("io.github.microutils:kotlin-logging:2.1.21")
+    compileOnly("io.github.oshai:kotlin-logging:4.0.1")
 
     // Exposed ORM
     val exposedVersion = "0.40.1"
