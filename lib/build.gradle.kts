@@ -13,7 +13,7 @@ dependencies {
     compileOnly("io.github.oshai:kotlin-logging:4.0.1")
 
     // Exposed ORM
-    val exposedVersion = "0.40.1"
+    val exposedVersion = "0.50.1"
     compileOnly("org.jetbrains.exposed:exposed-core:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
@@ -36,11 +36,11 @@ java {
 }
 
 publishing {
-    val libVersion = "3.2.0"
+    val libVersion = "3.3.0"
 
     publications {
         create<MavenPublication>("defaultJar") {
-            groupId = "com.github.suwayomi"
+            groupId = "com.github.coolemza"
             artifactId = "exposed-migrations"
             version = libVersion
 
@@ -48,7 +48,7 @@ publishing {
         }
 
         create<MavenPublication>("sourcesJar") {
-            groupId = "com.github.suwayomi"
+            groupId = "com.github.coolemza"
             artifactId = "exposed-migrations"
             version = "$libVersion-sources"
             artifact(tasks.named("sourcesJar"))
