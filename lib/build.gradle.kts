@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("org.jetbrains.kotlin.jvm") version "1.9.20"
     `java-library`
     `maven-publish`
 }
@@ -18,7 +18,7 @@ dependencies {
     compileOnly("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
-
+    compileOnly("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
 }
 
 tasks {
@@ -40,7 +40,7 @@ publishing {
 
     publications {
         create<MavenPublication>("defaultJar") {
-            groupId = "com.github.coolemza"
+            groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
             version = libVersion
 
@@ -48,7 +48,7 @@ publishing {
         }
 
         create<MavenPublication>("sourcesJar") {
-            groupId = "com.github.coolemza"
+            groupId = "com.github.suwayomi"
             artifactId = "exposed-migrations"
             version = "$libVersion-sources"
             artifact(tasks.named("sourcesJar"))
