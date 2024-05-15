@@ -10,7 +10,7 @@ repositories {
 
 dependencies {
     // Logging
-    compileOnly("io.github.oshai:kotlin-logging:4.0.1")
+    compileOnly("io.github.oshai:kotlin-logging:6.0.9")
 
     // Exposed ORM
     val exposedVersion = "0.50.1"
@@ -19,16 +19,6 @@ dependencies {
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
-}
-
-tasks {
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions {
-            freeCompilerArgs = listOf(
-                    "-Xopt-in=kotlin.RequiresOptIn",
-            )
-        }
-    }
 }
 
 java {
