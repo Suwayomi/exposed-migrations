@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.8.20"
+    id("org.jetbrains.kotlin.jvm") version "1.9.20"
     `java-library`
     `maven-publish`
 }
@@ -13,12 +13,12 @@ dependencies {
     compileOnly("io.github.oshai:kotlin-logging:4.0.1")
 
     // Exposed ORM
-    val exposedVersion = "0.40.1"
+    val exposedVersion = "0.50.1"
     compileOnly("org.jetbrains.exposed:exposed-core:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
-
+    compileOnly("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
 }
 
 tasks {
