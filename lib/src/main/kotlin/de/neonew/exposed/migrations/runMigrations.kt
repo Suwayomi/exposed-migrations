@@ -15,7 +15,6 @@ import java.time.Clock
 import java.time.Instant.now
 import kotlin.io.path.isDirectory
 import kotlin.io.path.name
-import kotlin.streams.toList
 
 private val logger = KotlinLogging.logger {}
 
@@ -34,7 +33,7 @@ fun runMigrations(
 
     val latestVersion = transaction(database) {
         createTableIfNotExists(database)
-        MigrationEntity.all().maxByOrNull { it.version }?.version?.value
+        MigrationEntity.all().maxByOrNull { it.version.value }?.version?.value
     }
 
     logger.info { "Database version before migrations: $latestVersion" }
