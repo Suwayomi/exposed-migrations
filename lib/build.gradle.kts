@@ -10,7 +10,7 @@ repositories {
 
 dependencies {
     // Logging
-    compileOnly("io.github.oshai:kotlin-logging-jvm:7.0.0")
+    compileOnly("io.github.oshai:kotlin-logging-jvm:7.0.3")
 
     // Exposed ORM
     val exposedVersion = "0.57.0"
