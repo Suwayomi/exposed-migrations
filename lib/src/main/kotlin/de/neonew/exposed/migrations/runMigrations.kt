@@ -15,6 +15,9 @@ import java.time.Clock
 import java.time.Instant.now
 import kotlin.io.path.isDirectory
 import kotlin.io.path.name
+// shows up as unused, however, it's required, otherwise, the jitpack build fails with:
+//  "... Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: ..."
+import kotlin.streams.toList
 
 private val logger = KotlinLogging.logger {}
 
