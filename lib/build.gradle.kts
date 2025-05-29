@@ -13,7 +13,7 @@ dependencies {
     compileOnly("io.github.oshai:kotlin-logging-jvm:7.0.4")
 
     // Exposed ORM
-    val exposedVersion = "0.59.0"
+    val exposedVersion = "0.61.0"
     compileOnly("org.jetbrains.exposed:exposed-core:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     compileOnly("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
