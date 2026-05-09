@@ -1,23 +1,20 @@
 package de.neonew.exposed.migrations
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import org.jetbrains.exposed.dao.id.EntityID
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils.create
-import org.jetbrains.exposed.sql.exists
-import org.jetbrains.exposed.sql.transactions.TransactionManager
-import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.v1.core.dao.id.EntityID
+import org.jetbrains.exposed.v1.jdbc.Database
+import org.jetbrains.exposed.v1.jdbc.SchemaUtils
+import org.jetbrains.exposed.v1.jdbc.exists
+import org.jetbrains.exposed.v1.jdbc.transactions.TransactionManager
+import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 import java.io.Closeable
 import java.nio.file.FileSystems
 import java.nio.file.Files
 import java.nio.file.Paths
-import java.time.Clock
-import java.time.Instant.now
 import kotlin.io.path.isDirectory
 import kotlin.io.path.name
-// shows up as unused, however, it's required, otherwise, the jitpack build fails with:
-//  "... Unresolved reference. None of the following candidates is applicable because of receiver type mismatch: ..."
-import kotlin.streams.toList
+import kotlin.streams.asSequence
+import kotlin.time.Clock
 
 private val logger = KotlinLogging.logger {}
 
@@ -26,7 +23,7 @@ internal lateinit var migrationsDatabase: Database
 fun runMigrations(
     migrations: List<Migration>,
     database: Database = TransactionManager.defaultDatabase!!,
-    clock: Clock = Clock.systemUTC(),
+    clock: Clock = Clock.System,
 ) {
     migrationsDatabase = database
 
@@ -52,7 +49,7 @@ fun runMigrations(
                 MigrationEntity.new {
                     version = EntityID(it.version, MigrationsTable)
                     name = it.name
-                    executedAt = now(clock)
+                    executedAt = clock.now()
                 }
             }
         }
@@ -74,10 +71,11 @@ private fun getTopLevelClasses(packageName: String, klass: Class<*>): List<Class
         }
         else -> Paths.get(uri)
     }.let { Files.walk(it, 1) }
-        .toList()
+        .asSequence()
         .filterNot { it.isDirectory() || it.name.contains('$') } // '$' means it's not a top level class
         .filter { it.name.endsWith(".class") }
         .map { Class.forName("$packageName.${it.name.substringBefore(".class")}") }
+        .toList()
         .also { closable?.close() }
 }
 
@@ -104,11 +102,11 @@ private fun createTableIfNotExists(database: Database) {
     if (MigrationsTable.exists()) {
         return
     }
-    val tableNames = database.dialect.allTablesNames()
+    val tableNames = database.dialectMetadata.allTablesNames()
     when (tableNames.isEmpty()) {
         true -> {
             logger.info { "Empty database found, creating table for migrations" }
-            create(MigrationsTable)
+            SchemaUtils.create(MigrationsTable)
         }
         false -> throw IllegalStateException("Tried to run migrations against a non-empty database without a Migrations table. This is not supported.")
     }
