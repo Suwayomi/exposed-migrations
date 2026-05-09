@@ -8,9 +8,8 @@ package de.neonew.exposed.migrations.helpers
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 import de.neonew.exposed.migrations.Migration
-import org.jetbrains.exposed.sql.transactions.TransactionManager
-import org.jetbrains.exposed.sql.vendors.currentDialect
-
+import org.jetbrains.exposed.v1.jdbc.transactions.TransactionManager
+import org.jetbrains.exposed.v1.jdbc.vendors.currentDialectMetadata
 
 abstract class SQLMigration : Migration() {
     abstract val sql: String
@@ -19,7 +18,7 @@ abstract class SQLMigration : Migration() {
         with(TransactionManager.current()) {
             exec(sql)
             commit()
-            currentDialect.resetCaches()
+            currentDialectMetadata.resetCaches()
         }
     }
 }
