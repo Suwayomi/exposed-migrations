@@ -22,7 +22,7 @@ internal lateinit var migrationsDatabase: Database
 
 fun runMigrations(
     migrations: List<Migration>,
-    database: Database = TransactionManager.defaultDatabase!!,
+    database: Database = TransactionManager.primaryDatabase!!,
     clock: Clock = Clock.System,
 ) {
     migrationsDatabase = database
