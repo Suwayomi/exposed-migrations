@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     // Logging
-    compileOnly("io.github.oshai:kotlin-logging-jvm:8.0.02")
+    compileOnly("io.github.oshai:kotlin-logging-jvm:8.0.4")
 
     // Exposed ORM
     val exposedVersion = "1.2.0"
