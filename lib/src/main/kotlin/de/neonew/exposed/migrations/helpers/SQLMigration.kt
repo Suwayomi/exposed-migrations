@@ -17,7 +17,6 @@ abstract class SQLMigration : Migration() {
     override fun run() {
         with(TransactionManager.current()) {
             exec(sql)
-            commit()
             currentDialectMetadata.resetCaches()
         }
     }
