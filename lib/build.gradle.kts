@@ -38,7 +38,7 @@ tasks.withType<KotlinJvmCompile> {
 }
 
 publishing {
-    val libVersion = "3.10.1"
+    val libVersion = "3.11.0"
 
     publications {
         create<MavenPublication>("defaultJar") {
