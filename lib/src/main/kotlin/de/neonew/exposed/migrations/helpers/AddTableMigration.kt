@@ -16,8 +16,6 @@ abstract class AddTableMigration : Migration() {
     abstract val tables: Array<Table>
 
     override fun run() {
-        transaction {
-            SchemaUtils.create(*tables)
-        }
+        SchemaUtils.create(*tables)
     }
 }
